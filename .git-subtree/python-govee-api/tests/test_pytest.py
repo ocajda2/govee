@@ -104,7 +104,7 @@ async def test_autobrightness_restore_saved_values(mock_aiohttp, mock_never_lock
             MockAiohttpResponse(
                 json={"data": {"devices": [copy.deepcopy(JSON_DEVICE_H6163)]}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -135,7 +135,7 @@ async def test_autobrightness_set100_get254(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json={"data": {"devices": [copy.deepcopy(JSON_DEVICE_H6163)]}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -151,7 +151,7 @@ async def test_autobrightness_set100_get254(mock_aiohttp, mock_never_lock):
                 status=400,
                 text="Unsupported Cmd Value",
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "cmd": {"name": "brightness", "value": 142},
@@ -166,7 +166,7 @@ async def test_autobrightness_set100_get254(mock_aiohttp, mock_never_lock):
                 status=200,
                 json={"code": 200, "message": "Success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "cmd": {"name": "brightness", "value": 55},
@@ -208,7 +208,7 @@ async def test_autobrightness_set100_get254(mock_aiohttp, mock_never_lock):
                     "code": 200,
                 },
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/state"
+                == "https://openapi.api.govee.com/router/api/v1/device/state"
                 and kwargs["params"]
                 == {"device": "40:83:FF:FF:FF:FF:FF:FF", "model": "H6163"},
             )
@@ -239,7 +239,7 @@ async def test_autobrightness_set254_get100_get254(mock_aiohttp, mock_never_lock
             MockAiohttpResponse(
                 json={"data": {"devices": [copy.deepcopy(JSON_DEVICE_H6163)]}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -255,7 +255,7 @@ async def test_autobrightness_set254_get100_get254(mock_aiohttp, mock_never_lock
                 status=200,
                 json={"code": 200, "message": "Success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "cmd": {"name": "brightness", "value": 142},
@@ -297,7 +297,7 @@ async def test_autobrightness_set254_get100_get254(mock_aiohttp, mock_never_lock
                     "code": 200,
                 },
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/state"
+                == "https://openapi.api.govee.com/router/api/v1/device/state"
                 and kwargs["params"]
                 == {"device": "40:83:FF:FF:FF:FF:FF:FF", "model": "H6163"},
             )
@@ -335,7 +335,7 @@ async def test_autobrightness_set254_get100_get254(mock_aiohttp, mock_never_lock
                     "code": 200,
                 },
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/state"
+                == "https://openapi.api.govee.com/router/api/v1/device/state"
                 and kwargs["params"]
                 == {"device": "40:83:FF:FF:FF:FF:FF:FF", "model": "H6163"},
             )
@@ -372,7 +372,7 @@ async def test_turnonbeforebrightness_brightness1_turnonthenbrightness(
             MockAiohttpResponse(
                 json={"data": {"devices": [copy.deepcopy(JSON_DEVICE_H6163)]}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -389,7 +389,7 @@ async def test_turnonbeforebrightness_brightness1_turnonthenbrightness(
                 status=200,
                 json={"code": 200, "message": "Success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "cmd": {"name": "turn", "value": "on"},
@@ -404,7 +404,7 @@ async def test_turnonbeforebrightness_brightness1_turnonthenbrightness(
                 status=200,
                 json={"code": 200, "message": "Success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "cmd": {"name": "brightness", "value": 1},
@@ -442,7 +442,7 @@ async def test_turnonbeforebrightness_brightness0_setbrihtness0(
             MockAiohttpResponse(
                 json={"data": {"devices": [copy.deepcopy(JSON_DEVICE_H6163)]}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -459,7 +459,7 @@ async def test_turnonbeforebrightness_brightness0_setbrihtness0(
                 status=200,
                 json={"code": 200, "message": "Success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "cmd": {"name": "brightness", "value": 0},
@@ -494,7 +494,7 @@ async def test_offline_laststate(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json={"data": {"devices": [copy.deepcopy(JSON_DEVICE_H6163)]}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -510,7 +510,7 @@ async def test_offline_laststate(mock_aiohttp, mock_never_lock):
                 status=200,
                 json={"code": 200, "message": "Success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "cmd": {"name": "turn", "value": "on"},
@@ -534,7 +534,7 @@ async def test_offline_laststate(mock_aiohttp, mock_never_lock):
                 status=200,
                 json=copy.deepcopy(JSON_DEVICE_STATE_OFFLINE),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/state"
+                == "https://openapi.api.govee.com/router/api/v1/device/state"
                 and kwargs["params"]
                 == {
                     "device": "40:83:FF:FF:FF:FF:FF:FF",
@@ -568,7 +568,7 @@ async def test_offlineIsOffConfig_off(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json={"data": {"devices": [copy.deepcopy(JSON_DEVICE_H6163)]}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -584,7 +584,7 @@ async def test_offlineIsOffConfig_off(mock_aiohttp, mock_never_lock):
                 status=200,
                 json={"code": 200, "message": "Success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "cmd": {"name": "turn", "value": "on"},
@@ -608,7 +608,7 @@ async def test_offlineIsOffConfig_off(mock_aiohttp, mock_never_lock):
                 status=200,
                 json=copy.deepcopy(JSON_DEVICE_STATE_OFFLINE),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/state"
+                == "https://openapi.api.govee.com/router/api/v1/device/state"
                 and kwargs["params"]
                 == {
                     "device": "40:83:FF:FF:FF:FF:FF:FF",
@@ -642,7 +642,7 @@ async def test_globalOfflineIsOffConfig_off(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json={"data": {"devices": [copy.deepcopy(JSON_DEVICE_H6163)]}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -661,7 +661,7 @@ async def test_globalOfflineIsOffConfig_off(mock_aiohttp, mock_never_lock):
                 status=200,
                 json={"code": 200, "message": "Success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "cmd": {"name": "turn", "value": "on"},
@@ -685,7 +685,7 @@ async def test_globalOfflineIsOffConfig_off(mock_aiohttp, mock_never_lock):
                 status=200,
                 json=copy.deepcopy(JSON_DEVICE_STATE_OFFLINE),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/state"
+                == "https://openapi.api.govee.com/router/api/v1/device/state"
                 and kwargs["params"]
                 == {
                     "device": "40:83:FF:FF:FF:FF:FF:FF",
@@ -715,7 +715,7 @@ async def test_set_disabled_state(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json={"data": {"devices": [copy.deepcopy(JSON_DEVICE_H6163)]}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -736,7 +736,7 @@ async def test_set_disabled_state(mock_aiohttp, mock_never_lock):
                 status=200,
                 json={"code": 200, "message": "Success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "cmd": {"name": "brightness", "value": 142},
@@ -765,7 +765,7 @@ async def test_set_disabled_state(mock_aiohttp, mock_never_lock):
                 status=200,
                 json={"code": 200, "message": "Success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "cmd": {"name": "brightness", "value": 142},
@@ -801,7 +801,7 @@ async def test_getNoDevices_initOK(mock_aiohttp, mock_never_lock, mock_logger):
             MockAiohttpResponse(
                 json={"code": 200, "message": "success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -837,7 +837,7 @@ async def test_getDevicesTwice_keepOrAddDevices(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json={"code": 200, "message": "success", "data": {}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -852,7 +852,7 @@ async def test_getDevicesTwice_keepOrAddDevices(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json={"data": {"devices": [copy.deepcopy(JSON_DEVICE_H6163)]}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -868,7 +868,7 @@ async def test_getDevicesTwice_keepOrAddDevices(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json={"data": {"devices": [copy.deepcopy(JSON_DEVICE_H6104)]}},
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -892,7 +892,7 @@ async def test_getDevicesTwice_keepOrAddDevices(mock_aiohttp, mock_never_lock):
                     }
                 },
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         # call
@@ -921,7 +921,7 @@ async def test_rate_limiter(mock_aiohttp, mock_sleep):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_DEVICES),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
                 headers={
                     RATELIMIT_TOTAL: 100,
                     RATELIMIT_REMAINING: 5,  # next time we need to limit
@@ -940,7 +940,7 @@ async def test_rate_limiter(mock_aiohttp, mock_sleep):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_DEVICES),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         _, err2 = await govee.get_devices()
@@ -961,7 +961,7 @@ async def test_rate_limit_exceeded(mock_aiohttp):
                 status=429,  # too many requests
                 text="Rate limit exceeded, retry in 1 seconds.",
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
                 headers={
                     RATELIMIT_TOTAL: 100,
                     RATELIMIT_REMAINING: 5,  # next time we need to limit
@@ -994,7 +994,7 @@ async def test_rate_limiter_custom_threshold(mock_aiohttp):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_DEVICES),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
                 headers={
                     RATELIMIT_TOTAL: 100,
                     RATELIMIT_REMAINING: 5,  # we lower the limit to 4 to not lock
@@ -1009,7 +1009,7 @@ async def test_rate_limiter_custom_threshold(mock_aiohttp):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_DEVICES),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
                 headers={
                     RATELIMIT_TOTAL: 100,
                     RATELIMIT_REMAINING: 5,  # we lower the limit to 4 to not lock
@@ -1035,7 +1035,7 @@ async def test_get_devices(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_DEVICES),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices"
+                == "https://openapi.api.govee.com/router/api/v1/user/devices"
                 and kwargs["headers"] == {"Govee-API-Key": "SUPER_SECRET_KEY"},
             )
         )
@@ -1055,7 +1055,7 @@ async def test_get_devices_empty(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_DEVICES_EMPTY),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices"
+                == "https://openapi.api.govee.com/router/api/v1/user/devices"
                 and kwargs["headers"] == {"Govee-API-Key": "SUPER_SECRET_KEY"},
             )
         )
@@ -1073,7 +1073,7 @@ async def test_get_devices_cache(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_DEVICES),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices",
+                == "https://openapi.api.govee.com/router/api/v1/user/devices",
             )
         )
         result, err = await govee.get_devices()
@@ -1094,7 +1094,7 @@ async def test_get_devices_invalid_key(mock_aiohttp, mock_never_lock):
                 status=401,
                 text="invalid key",
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices"
+                == "https://openapi.api.govee.com/router/api/v1/user/devices"
                 and kwargs["headers"] == {"Govee-API-Key": invalid_key},
             )
         )
@@ -1113,7 +1113,7 @@ async def test_turn_on(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_OK_RESPONSE),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "device": get_dummy_device_H6163().device,
@@ -1138,7 +1138,7 @@ async def test_turn_on_auth_failure(mock_aiohttp, mock_never_lock):
                 status=401,
                 text="Test auth failed",
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "device": get_dummy_device_H6163().device,
@@ -1166,7 +1166,7 @@ async def test_turn_off_by_address(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_OK_RESPONSE),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "device": get_dummy_device_H6163().device,
@@ -1196,7 +1196,7 @@ async def test_get_states(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_DEVICE_STATE),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/state"
+                == "https://openapi.api.govee.com/router/api/v1/device/state"
                 and kwargs["params"]
                 == {
                     "device": get_dummy_device_H6163().device,
@@ -1262,7 +1262,7 @@ async def test_set_brightness(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_OK_RESPONSE),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "device": get_dummy_device_H6163().device,
@@ -1295,7 +1295,7 @@ async def test_set_color_temp(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_OK_RESPONSE),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "device": get_dummy_device_H6163().device,
@@ -1322,7 +1322,7 @@ async def test_set_color(mock_aiohttp, mock_never_lock):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_OK_RESPONSE),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "device": get_dummy_device_H6163().device,
@@ -1357,7 +1357,7 @@ async def test_turn_on_and_get_cache_state(mock_aiohttp):
             MockAiohttpResponse(
                 json=copy.deepcopy(JSON_OK_RESPONSE),
                 check_kwargs=lambda kwargs: kwargs["url"]
-                == "https://developer-api.govee.com/v1/devices/control"
+                == "https://openapi.api.govee.com/router/api/v1/device/control"
                 and kwargs["json"]
                 == {
                     "device": get_dummy_device_H6163().device,

@@ -2,7 +2,7 @@ import copy
 
 from govee_api_laggat import GoveeDevice, GoveeLearnedInfo, GoveeSource
 
-API_URL = "https://developer-api.govee.com"
+API_URL = "https://openapi.api.govee.com"
 API_KEY = "SUPER_SECRET_KEY"
 # The maximum number of requests you're permitted to make per minute.
 RATELIMIT_TOTAL = "Rate-Limit-Total"
